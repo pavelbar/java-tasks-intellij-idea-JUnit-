@@ -1,6 +1,9 @@
 package com.baranov;
 
 public class Main {
+    private static final String ENGLISH_ALPHABET = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
+    private static final String ARABIC_NUMERALS = "1234567890";
+
 
     public static void main(String[] args) {
 	// write your code here

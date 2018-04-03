@@ -3,12 +3,125 @@ package com.baranov.tests;
 import com.baranov.core.MArrays;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
+
 class MArraysTest {
+
+    private static final String ENGLISH_ALPHABET = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
+    private static final String ARABIC_NUMERALS = "1234567890";
+
+    final char[] arrayA = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '0'};
+    final char[] arrayB = {'A', 'a', 'B', 'b', 'C', 'c', 'D', 'd', 'E', 'e', 'F', 'f', 'G', 'g', 'H', 'h', 'J', 'j'};
+
+    //##### createEmptyArray ##### lenght = -1 ####################################
     @Test
-    void test() {
-        char[] x = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
-        assertEquals(45, MArrays.sumAll(x));
+    public void createEmptyArray_canNotCreateArrayWithNegativeLengthIsOne() {
+        Throwable exception = assertThrows(IllegalArgumentException.class,
+                () -> {
+                    MArrays a = new MArrays(-1);
+                });
+    }
+
+    //##### createEmptyArray ##### lenght = -2 ####################################
+    @Test
+    public void createEmptyArray_canNotCreateArrayWithNegativeLengthIsWwo() {
+        Throwable exception = assertThrows(IllegalArgumentException.class,
+                () -> {
+                    MArrays a = new MArrays(-2);
+                });
+    }
+
+    //##### createEmptyArray ##### lenght = 1 ####################################
+    @Test
+    public void createEmptyArray_canCreateArrayWithlengthIsOne() {
+        MArrays a = new MArrays(1);
+        assertEquals(1, a.getLength());
+    }
+
+    //##### createEmptyArray ##### lenght = 2 ####################################
+    @Test
+    public void createEmptyArray_canCreateArrayWithlengthIsTwo() {
+        MArrays a = new MArrays(2);
+        assertEquals(2, a.getLength());
+    }
+
+    //##### createNotEmptyArray ##### lenght = 10 ####################################
+    @Test
+    public void createNotEmptyArray_IdentityForArraysFromARABIC_NUMERALS() {
+        MArrays a = new MArrays(10);
+
+        a.setEltAtIndex('1', 0);
+        a.setEltAtIndex('2', 1);
+        a.setEltAtIndex('3', 2);
+        a.setEltAtIndex('4', 3);
+        a.setEltAtIndex('5', 4);
+        a.setEltAtIndex('6', 5);
+        a.setEltAtIndex('7', 6);
+        a.setEltAtIndex('8', 7);
+        a.setEltAtIndex('9', 8);
+        a.setEltAtIndex('0', 9);
+
+        char[] result = new char[a.getLength()];
+        for (int i = 0; i < a.getLength(); i++) {
+            result[i] = a.getEltAtIndex(i);
+        }
+        assertArrayEquals(result, arrayA);
+    }
+
+    //##### createArrayFromArray ##### arrayA = ARABIC_NUMERALS ####################################
+    @Test
+    public void createArrayFromArray_LenghOfArrayFromARABIC_NUMERALS() {
+        MArrays a = new MArrays(arrayA);
+        assertEquals(10, a.getLength());
+    }
+
+    //##### createArrayFromArray ##### arrayA = ARABIC_NUMERALS ####################################
+    @Test
+    public void createArrayFromArray_IdentityForArrayFromARABIC_NUMERALS() {
+        MArrays a = new MArrays(arrayA);
+        char[] result = new char[a.getLength()];
+        for (int i = 0; i < a.getLength(); i++) {
+            result[i] = a.getEltAtIndex(i);
+        }
+        assertArrayEquals(result, arrayA);
+    }
+
+    //##### createArrayFromArray ##### array = LOW_ENGLISH_ALPHABET ####################################
+    @Test
+    public void createArrayFromArray_LenghOfArrayFromLOW_ENGLISH_ALPHABET() {
+        MArrays a = new MArrays(arrayB);
+        assertEquals(18, a.getLength());
+    }
+
+    //##### createArrayFromArray ##### arrayA = ARABIC_NUMERALS ####################################
+    @Test
+    public void createArrayFromArray_IdentityForArrayFromENGLISH_ALPHABET() {
+        MArrays a = new MArrays(arrayB);
+        char[] result = new char[a.getLength()];
+        for (int i = 0; i < a.getLength(); i++) {
+            result[i] = a.getEltAtIndex(i);
+        }
+        assertArrayEquals(result, arrayB);
+    }
+
+    //##### setRandomSymbolsFromAlphabetToArray ##### lphabetA and lphabetB ####################################
+    @Test
+    public void setRandomSymbolsFromAlphabetToArray_NotIdentityFromDifferentAlphabets() {
+        MArrays a = new MArrays(arrayA);
+        MArrays b = new MArrays(arrayB);
+
+        char[] resultA = new char[a.getLength()];
+        for (int i = 0; i < a.getLength(); i++) {
+            resultA[i] = a.getEltAtIndex(i);
+        }
+
+        char[] resultB = new char[a.getLength()];
+        for (int i = 0; i < a.getLength(); i++) {
+            resultB[i] = b.getEltAtIndex(i);
+        }
+        assertFalse(Arrays.equals(arrayA, arrayB));
     }
 }
