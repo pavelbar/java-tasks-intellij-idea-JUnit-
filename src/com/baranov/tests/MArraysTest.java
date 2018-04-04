@@ -232,7 +232,7 @@ class MArraysTest {
         a.setRandomSymbolsFromAlphabetToArray(ENGLISH_ALPHABET);
         Throwable exception = assertThrows(IllegalArgumentException.class,
                 () -> {
-                   a.calcSumElements();
+                    a.calcSumElements();
                 });
     }
 
@@ -273,5 +273,23 @@ class MArraysTest {
         int[] arr1 = {4, 8, 6, 1, 2, 9, 4};
         assertEquals(MArrays.findIndexOfTwoNeighboringNumbers(arr1), 3);
     }
+
+    //#################################################################################################
+    //##### 1.3 MulTable ##############################################################################
+    //#################################################################################################
+//    @Test
+//    public void getMulTable_forNisThree() {
+//        int[] result = {1, 2, 3, 2, 4, 6, 3, 6, 9};
+//        assertArrayEquals(MArrays.getMulTable(3), result);
+//    }
+
+//    @Test
+//    public void getMulTable_forNisFour() {
+//        int[] result = {1, 2, 3, 4,
+//                        2, 4, 6, 8,
+//                        3, 6, 9, 12,
+//                        4, 8, 12, 16};
+//        assertArrayEquals(MArrays.getMulTable(4), result);
+//    }
 
 }

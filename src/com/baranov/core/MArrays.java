@@ -201,5 +201,52 @@ public class MArrays {
         return index;
     }
 
+    /*
+    3. Реализуйте Java-основной метод, который выводит таблицу умножения для всех чисел из 1 до n.
+    Используйте символ табуляции V, чтобы выровнять значения.
+    Пример для n = 3:
+    1 2 3
+    2 4 6
+    3 6 9
+
+    EN: Implement a Java-main-method that prints out the multiplication table for all numbers from
+    1	to n. Use the tabulator character V to align the values.
+    Example for n = 3:
+    1 2 3
+    2 4 6
+    3 6 9
+     */
+    public static int[] getArrayWithMulTable(int n) {//1.3
+        if (n <= 0) {
+            throw new IllegalArgumentException("The N must be > 0");
+        }
+        int[] result = new int[n * n];
+        int index = 0;
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                result[index] = i * j;
+                index++;
+            }
+        }
+        return result;
+    }
+
+    public static void printArrayWithMulTable(int arr[]) {//1.3
+        double lengthCheck = arr.length;
+        if (Math.sqrt(lengthCheck) % 1 != 0) {
+            throw new IllegalArgumentException("Invalid length. The multiplication table must be square");
+        }
+
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            count++;
+            System.out.printf("%d\t", arr[i]);
+            if (count == Math.sqrt(lengthCheck)) {
+                System.out.printf("\n");
+                count = 0;
+            }
+        }
+    }
 
 }

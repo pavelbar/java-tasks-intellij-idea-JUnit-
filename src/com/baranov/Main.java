@@ -39,8 +39,7 @@ class main {
         System.out.printf("\n\n char random Array3 = [");
         MArrays a3 = new MArrays(10);
         a3.setRandomSymbolsFromAlphabetToArray(ARABIC_NUMERALS);
-        for (int i = 0; i < a3.getLength(); i++)
-        {
+        for (int i = 0; i < a3.getLength(); i++) {
             System.out.printf("%c", a3.getEltAtIndex(i));
             if (i != a3.getLength() - 1) {
                 System.out.printf(", ");
@@ -74,8 +73,7 @@ class main {
         System.out.printf("\n\n char random Array3 = [");
         MArrays b3 = new MArrays(10);
         b3.setRandomSymbolsFromAlphabetToArray(ARABIC_NUMERALS);
-        for (int i = 0; i < b3.getLength(); i++)
-        {
+        for (int i = 0; i < b3.getLength(); i++) {
             System.out.printf("%c", b3.getEltAtIndex(i));
             if (i != b3.getLength() - 1) {
                 System.out.printf(", ");
@@ -83,18 +81,22 @@ class main {
         }
         System.out.printf("]");
         System.out.printf("\n Object: Index of two neighboring numbers is %d", b3.findIndexOfTwoNeighboringNumbers());
-
-
-
-
-
-//        System.out.printf("\n char array2 = ['4', '8', '6', '1', '2', '9', '4']");
-//        char[] arr3 = {'4', '8', '6', '1', '2', '9', '4'};
-//        MArrays a3 = new MArrays(arr3);
-//        System.out.printf("\n Object: Index of two neighboring numbers %d", a3.findIndexOfTwoNeighboringNumbers());
-//        System.out.printf("\n Foo: Index of two neighboring numbers %d", MArrays.findIndexOfTwoNeighboringNumbers(arr3));
-
+        //
+        //
+        //
+        //
+        //
         System.out.printf("\n=======TASK 1.3===========================================");
+        //
+        //
+        //
+        //
+        //
+        System.out.printf("\n Use method getMulTable then use method printMulTable for N = 6\n");
+        MArrays.printArrayWithMulTable( MArrays.getArrayWithMulTable(6));
+
+        System.out.printf("\n\n Use method getMulTable then use method printMulTable for N = 7\n");
+        MArrays.printArrayWithMulTable( MArrays.getArrayWithMulTable(7));
     }
 }
 
