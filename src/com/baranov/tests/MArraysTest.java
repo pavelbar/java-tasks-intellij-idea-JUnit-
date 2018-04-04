@@ -277,19 +277,28 @@ class MArraysTest {
     //#################################################################################################
     //##### 1.3 MulTable ##############################################################################
     //#################################################################################################
-//    @Test
-//    public void getMulTable_forNisThree() {
-//        int[] result = {1, 2, 3, 2, 4, 6, 3, 6, 9};
-//        assertArrayEquals(MArrays.getMulTable(3), result);
-//    }
+    @Test
+    public void getArrayWithMulTable_forNisThree() {
+        int[] result = {1, 2, 3, 2, 4, 6, 3, 6, 9};
+        assertArrayEquals(MArrays.getArrayWithMulTable(3), result);
+    }
 
-//    @Test
-//    public void getMulTable_forNisFour() {
-//        int[] result = {1, 2, 3, 4,
-//                        2, 4, 6, 8,
-//                        3, 6, 9, 12,
-//                        4, 8, 12, 16};
-//        assertArrayEquals(MArrays.getMulTable(4), result);
-//    }
+    @Test
+    public void getArrayWithMulTable_forNisFour() {
+        int[] result = {1, 2, 3, 4,
+                        2, 4, 6, 8,
+                        3, 6, 9, 12,
+                        4, 8, 12, 16};
+        assertArrayEquals(MArrays.getArrayWithMulTable(4), result);
+    }
+
+    @Test
+    public void printArrayWithMulTable_canNotPrintInvalidArray() {
+        int[] arr = {1, 2, 3};
+        Throwable exception = assertThrows(IllegalArgumentException.class,
+                () -> {
+                    MArrays.printArrayWithMulTable(arr);
+                });
+    }
 
 }

@@ -233,6 +233,10 @@ public class MArrays {
     }
 
     public static void printArrayWithMulTable(int arr[]) {//1.3
+        if (arr == null ) {
+            throw new IllegalArgumentException("The print array is empty");
+        }
+
         double lengthCheck = arr.length;
         if (Math.sqrt(lengthCheck) % 1 != 0) {
             throw new IllegalArgumentException("Invalid length. The multiplication table must be square");
