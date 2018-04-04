@@ -106,7 +106,7 @@ public class MArrays {
         return true;
     }
 
-    public static long calcSumElements(char[] arr) {//1.1 FOO +tested
+    public static long calcSumElements(char[] arr) {//1.1 char FOO +tested
         if (isArrayOfArabicSymbols(arr) == false) {
             throw new IllegalArgumentException("The array does not contain an Arabic character");
         }
@@ -115,6 +115,14 @@ public class MArrays {
         for (int i = 0; i < arr.length; i++) {
 
             sum += Character.getNumericValue(arr[i]);
+        }
+        return sum;
+    }
+
+    public static long calcSumElements(int[] arr) {//1.1 int FOO +tested
+        long sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
         }
         return sum;
     }
@@ -143,6 +151,23 @@ public class MArrays {
     */
 
     public static int findIndexOfTwoNeighboringNumbers(char[] arr) { //1.2 FOO +tested
+        if (arr.length <= 1) {
+            throw new IllegalArgumentException("The length must be > 1");
+        }
+
+        int sum = arr[0] + arr[1];
+        int index = 0;
+
+        for (int i = 2; i < arr.length; i++) {
+            if (arr[i - 1] + arr[i] < sum) {
+                sum = arr[i - 1] + arr[i];
+                index = i - 1;
+            }
+        }
+        return index;
+    }
+
+    public static int findIndexOfTwoNeighboringNumbers(int[] arr) { //1.2 FOO +tested
         if (arr.length <= 1) {
             throw new IllegalArgumentException("The length must be > 1");
         }

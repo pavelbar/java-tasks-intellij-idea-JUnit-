@@ -3,7 +3,12 @@ package com.baranov;
 import com.baranov.core.MArrays;
 
 class main {
+
+    static final String ENGLISH_ALPHABET = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
+    static final String ARABIC_NUMERALS = "1234567890";
+
     public static void main(String args[]) {
+
         System.out.printf("\n\n==============================================================");
         System.out.printf("\n===ARRAY========================================================");
         System.out.printf("\n================================================================\n");
@@ -16,18 +21,32 @@ class main {
         System.out.printf("\n Object: The Sum array is %d", a1.calcSumElements());
         System.out.printf("\n Foo: The Sum array is %d", MArrays.calcSumElements(arr1));
 
+        System.out.printf("\n\n int Array2 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]");
         int[] arr2 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         MArrays a2 = new MArrays(arr2);
+        System.out.printf("\n Object: The Sum array is %d", a2.calcSumElements());
+        System.out.printf("\n Foo: The Sum array is %d", MArrays.calcSumElements(arr2));
 
-        //System.out.printf("\n Foo: The Sum array is %d", MArrays.calcSumElements(arr2));
+        System.out.printf("\n\n char random Array3 = [");
+        MArrays a3 = new MArrays(10);
+        a3.setRandomSymbolsFromAlphabetToArray(ARABIC_NUMERALS);
+        for (int i = 0; i < a3.getLength(); i++)
+        {
+            System.out.printf("%c", a3.getEltAtIndex(i));
+            if (i != a3.getLength() - 1) {
+                System.out.printf(", ");
+            }
+        }
+        System.out.printf("]");
+        System.out.printf("\n Object: The Sum array is %d", a3.calcSumElements());
 
         System.out.printf("\n=======TASK 1.2===========================================");
 
-        System.out.printf("\n char array2 = ['4', '8', '6', '1', '2', '9', '4']");
-        char[] arr3 = {'4', '8', '6', '1', '2', '9', '4'};
-        MArrays a3 = new MArrays(arr3);
-        System.out.printf("\n Object: Index of two neighboring numbers %d", a3.findIndexOfTwoNeighboringNumbers());
-        System.out.printf("\n Foo: Index of two neighboring numbers %d", MArrays.findIndexOfTwoNeighboringNumbers(arr3));
+//        System.out.printf("\n char array2 = ['4', '8', '6', '1', '2', '9', '4']");
+//        char[] arr3 = {'4', '8', '6', '1', '2', '9', '4'};
+//        MArrays a3 = new MArrays(arr3);
+//        System.out.printf("\n Object: Index of two neighboring numbers %d", a3.findIndexOfTwoNeighboringNumbers());
+//        System.out.printf("\n Foo: Index of two neighboring numbers %d", MArrays.findIndexOfTwoNeighboringNumbers(arr3));
 
         System.out.printf("\n=======TASK 1.3===========================================");
     }

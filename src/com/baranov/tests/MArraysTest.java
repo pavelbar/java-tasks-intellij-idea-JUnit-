@@ -205,18 +205,29 @@ class MArraysTest {
     //#################################################################################################
 
     @Test
-    public void calcSumArrayElements_object() {
+    public void calcSumArrayElements_CharObject() {
         MArrays a = new MArrays(CHAR_ARRAY_FROM_ARABIC_NUMERALS);
         assertEquals(a.calcSumElements(), 45);
     }
 
     @Test
-    public void calcSumArrayElements_foo() {
+    public void calcSumArrayElements_CharFoo() {
         assertEquals(MArrays.calcSumElements(CHAR_ARRAY_FROM_ARABIC_NUMERALS), 45);
     }
 
     @Test
-    public void calcSumArrayElements_canNotCalcForObject() {
+    public void calcSumArrayElements_IntObject() {
+        MArrays a = new MArrays(INT_ARRAY_FROM_ARABIC_NUMERALS);
+        assertEquals(a.calcSumElements(), 45);
+    }
+
+    @Test
+    public void calcSumArrayElements_IntFoo() {
+        assertEquals(MArrays.calcSumElements(INT_ARRAY_FROM_ARABIC_NUMERALS), 45);
+    }
+
+    @Test
+    public void calcSumArrayElements_canNotCalcForCharObject() {
         MArrays a = new MArrays(77);
         a.setRandomSymbolsFromAlphabetToArray(ENGLISH_ALPHABET);
         Throwable exception = assertThrows(IllegalArgumentException.class,
@@ -226,7 +237,7 @@ class MArraysTest {
     }
 
     @Test
-    public void calcSumArrayElements_canNotCalcForFoo() {
+    public void calcSumArrayElements_canNotCalcForCharFoo() {
         Throwable exception = assertThrows(IllegalArgumentException.class,
                 () -> {
                     MArrays.calcSumElements(CHAR_ARRAY_FROM_ENGLISH_ALPHABET);
@@ -238,15 +249,28 @@ class MArraysTest {
     //#################################################################################################
 
     @Test
-    public void findIndexOfTwoNeighboringNumbers_object() {
+    public void findIndexOfTwoNeighboringNumbers_CharObject() {
         char[] arr1 = {'4', '8', '6', '1', '2', '9', '4'};
         MArrays a = new MArrays(arr1);
         assertEquals(a.findIndexOfTwoNeighboringNumbers(), 3);
     }
 
     @Test
-    public void findIndexOfTwoNeighboringNumbers_foo() {
+    public void findIndexOfTwoNeighboringNumbers_CharFoo() {
         char[] arr1 = {'4', '8', '6', '1', '2', '9', '4'};
+        assertEquals(MArrays.findIndexOfTwoNeighboringNumbers(arr1), 3);
+    }
+
+    @Test
+    public void findIndexOfTwoNeighboringNumbers_IntObject() {
+        int[] arr1 = {4, 8, 6, 1, 2, 9, 4};
+        MArrays a = new MArrays(arr1);
+        assertEquals(a.findIndexOfTwoNeighboringNumbers(), 3);
+    }
+
+    @Test
+    public void findIndexOfTwoNeighboringNumbers_IntFoo() {
+        int[] arr1 = {4, 8, 6, 1, 2, 9, 4};
         assertEquals(MArrays.findIndexOfTwoNeighboringNumbers(arr1), 3);
     }
 
