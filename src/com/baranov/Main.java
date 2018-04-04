@@ -9,12 +9,21 @@ class main {
 
     public static void main(String args[]) {
 
-        System.out.printf("\n\n==============================================================");
-        System.out.printf("\n===ARRAY========================================================");
+
+        System.out.printf("\n\n================================================================");
+        System.out.printf("\n==================        ARRAY        =========================");
         System.out.printf("\n================================================================\n");
-
+        //
+        //
+        //
+        //
+        //
         System.out.printf("\n=======TASK 1.1===========================================");
-
+        //
+        //
+        //
+        //
+        //
         System.out.printf("\n char Array1 = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']");
         char[] arr1 = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
         MArrays a1 = new MArrays(arr1);
@@ -39,8 +48,45 @@ class main {
         }
         System.out.printf("]");
         System.out.printf("\n Object: The Sum array is %d", a3.calcSumElements());
-
+        //
+        //
+        //
+        //
+        //
         System.out.printf("\n=======TASK 1.2===========================================");
+        //
+        //
+        //
+        //
+        //
+        System.out.printf("\n char array1 = ['4', '8', '6', '1', '2', '9', '4']");
+        char[] arrB1 = {'4', '8', '6', '1', '2', '9', '4'};
+        MArrays b1 = new MArrays(arrB1);
+        System.out.printf("\n Object: Index of two neighboring numbers  is %d", b1.findIndexOfTwoNeighboringNumbers());
+        System.out.printf("\n Foo: Index of two neighboring numbers is %d", MArrays.findIndexOfTwoNeighboringNumbers(arrB1));
+
+        System.out.printf("\n\n int Array2 = [4, 8, 6, 1, 2, 9, 4]");
+        int[] arrB2 = {4, 8, 6, 1, 2, 9, 4};
+        MArrays b2 = new MArrays(arrB2);
+        System.out.printf("\n Object: Index of two neighboring numbers is  %d", b2.findIndexOfTwoNeighboringNumbers());
+        System.out.printf("\n Foo: Index of two neighboring numbers is %d", MArrays.findIndexOfTwoNeighboringNumbers(arrB2));
+
+        System.out.printf("\n\n char random Array3 = [");
+        MArrays b3 = new MArrays(10);
+        b3.setRandomSymbolsFromAlphabetToArray(ARABIC_NUMERALS);
+        for (int i = 0; i < b3.getLength(); i++)
+        {
+            System.out.printf("%c", b3.getEltAtIndex(i));
+            if (i != b3.getLength() - 1) {
+                System.out.printf(", ");
+            }
+        }
+        System.out.printf("]");
+        System.out.printf("\n Object: Index of two neighboring numbers is %d", b3.findIndexOfTwoNeighboringNumbers());
+
+
+
+
 
 //        System.out.printf("\n char array2 = ['4', '8', '6', '1', '2', '9', '4']");
 //        char[] arr3 = {'4', '8', '6', '1', '2', '9', '4'};
