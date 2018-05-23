@@ -1,9 +1,12 @@
 package com.baranov.core;
 
 import java.security.SecureRandom;
+import java.util.OptionalDouble;
+import java.util.stream.IntStream;
 
 public class MArrays {
     private static final String ARABIC_NUMERALS = "1234567890";
+    private static final int MAX_ARABIC_NUMERALS = 9;
     private static final int RADIX_DEC = 10;
 
     private char array[];
@@ -17,29 +20,24 @@ public class MArrays {
         array = new char[len];
     }
 
-    public MArrays(char arr[]) {//createArrayFromArrayC +tested
+    public MArrays(char arr[]) {//createArrayFromArrayChar +tested
         if (arr == null) {
             array = null;
         } else {
             array = new char[arr.length];
-            for (int i = 0; i < arr.length; i++) {
-                array[i] = arr[i];
-            }
+            System.arraycopy(arr, 0, array, 0, arr.length);
         }
     }
 
-    public MArrays(int arr[]) {//createArrayFromArrayI
-        for (int i = 0; i < arr.length; i++) {
-            if ((arr[i] < 0) || (arr[i] > 9)) throw new IllegalArgumentException("Number is not single-valued");
+    public MArrays(int arr[]) {//createArrayFromArrayInt +tested
+        for (int anArr : arr) {
+            if ((anArr < 0) || (anArr > MAX_ARABIC_NUMERALS))
+                throw new IllegalArgumentException("Number is not single-valued");
         }
 
-        if (arr == null) {
-            array = null;
-        } else {
-            array = new char[arr.length];
-            for (int i = 0; i < arr.length; i++) {
-                array[i] = Character.forDigit(arr[i], RADIX_DEC);
-            }
+        array = new char[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            array[i] = Character.forDigit(arr[i], RADIX_DEC);
         }
     }
 
@@ -69,16 +67,15 @@ public class MArrays {
 
     /*##### random methods ###################################################################*/
 
-    protected char getRandomSymbolFromAlphabet(String Alphabet) {//FOR: setRandomSymbolsFromAlphabetToArray
+    private char getRandomSymbolFromAlphabet(String Alphabet) {//FOR: setRandomSymbolsFromAlphabetToArray
         SecureRandom rnd = new SecureRandom();
         return Alphabet.charAt(rnd.nextInt(Alphabet.length()));
     }
 
-    public boolean setRandomSymbolsFromAlphabetToArray(String Alphabet) {// +tested
+    public void setRandomSymbolsFromAlphabetToArray(String Alphabet) {// +tested
         for (int i = 0; i < array.length; i++) {
             array[i] = getRandomSymbolFromAlphabet(Alphabet);
         }
-        return true;
     }
 
     /*##### tasks methods ######################################################################
@@ -90,50 +87,50 @@ public class MArrays {
     the digits 'O' to '9*. The function should return the digit sum as a long value.
     */
 
-    protected static boolean isArabicSymbol(Character c) {//FOR: isArrayOfArabicSymbols
+    private static boolean isArabicSymbol(Character c) {//FOR: isArrayOfArabicSymbols
         for (int i = 0; i < ARABIC_NUMERALS.length(); i++) {
             if (c == ARABIC_NUMERALS.charAt(i)) return true;
         }
         return false;
     }
 
-    protected static boolean isArrayOfArabicSymbols(char arr[]) {//FOR: task
-        for (int i = 0; i < arr.length; i++) {
-            if (isArabicSymbol(arr[i]) == false) {
-                return false;
+    private static boolean isArrayOfArabicSymbols(char arr[]) {//FOR: tasks
+        for (char anArr : arr) {
+            if ( /*!!!*/ !isArabicSymbol(anArr)) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
-    public static long calcSumElements(char[] arr) {//1.1 char FOO +tested
-        if (isArrayOfArabicSymbols(arr) == false) {
+    public static long getSumElements(char[] arr) {//1.1 char FOO +tested
+        if ( /*!!!*/ isArrayOfArabicSymbols(arr)) {
             throw new IllegalArgumentException("The array does not contain an Arabic character");
         }
 
         long sum = 0;
-        for (int i = 0; i < arr.length; i++) {
+        for (char anArr : arr) {
 
-            sum += Character.getNumericValue(arr[i]);
+            sum += Character.getNumericValue(anArr);
         }
         return sum;
     }
 
-    public static long calcSumElements(int[] arr) {//1.1 int FOO +tested
+    public static long getSumElements(int[] arr) {//1.1 int FOO +tested
         long sum = 0;
-        for (int i = 0; i < arr.length; i++) {
-            sum += arr[i];
+        for (int anArr : arr) {
+            sum += anArr;
         }
         return sum;
     }
 
-    public long calcSumElements() {//1.1 OBJECT +tested
-        if (isArrayOfArabicSymbols(array) == false) {
+    public long getSumElements() {//1.1 OBJECT +tested
+        if ( /*!!!*/ isArrayOfArabicSymbols(array)) {
             throw new IllegalArgumentException("The array does not contain an Arabic character");
         }
         long sum = 0;
-        for (int i = 0; i < array.length; i++) {
-            sum += Character.getNumericValue(array[i]);
+        for (char anArray : array) {
+            sum += Character.getNumericValue(anArray);
         }
         return sum;
     }
@@ -149,10 +146,17 @@ public class MArrays {
     Example: In the sequence 4 8 6 1 2 9 4 the minimum distance is 1 (between 1 and 2).
     The function should return the index 3 (of number 1).
     */
+    public int findIndexOfTwoNeighboringNumbers() { //1.2 OBJECT +tested
+        return MArrays.findIndexOfTwoNeighboringNumbers(array);
+    }
 
     public static int findIndexOfTwoNeighboringNumbers(char[] arr) { //1.2 FOO +tested
         if (arr.length <= 1) {
             throw new IllegalArgumentException("The length must be > 1");
+        }
+
+        if ( /*!!!*/ isArrayOfArabicSymbols(arr)) {
+            throw new IllegalArgumentException("The array does not contain an Arabic character");
         }
 
         int sum = arr[0] + arr[1];
@@ -184,23 +188,6 @@ public class MArrays {
         return index;
     }
 
-    public int findIndexOfTwoNeighboringNumbers() { //1.2 OBJECT +tested
-        if (array.length <= 1) {
-            throw new IllegalArgumentException("The length must be > 1");
-        }
-
-        int sum = array[0] + array[1];
-        int index = 0;
-
-        for (int i = 2; i < array.length; i++) {
-            if (array[i - 1] + array[i] < sum) {
-                sum = array[i - 1] + array[i];
-                index = i - 1;
-            }
-        }
-        return index;
-    }
-
     /*
     3. Реализуйте Java-основной метод, который выводит таблицу умножения для всех чисел из 1 до n.
     Используйте символ табуляции V, чтобы выровнять значения.
@@ -216,7 +203,8 @@ public class MArrays {
     2 4 6
     3 6 9
      */
-    public static int[] getArrayWithMulTable(int n) {//1.3
+
+    public static int[] getArrayWithMulTable(int n) {//1.3 +tested
         if (n <= 0) {
             throw new IllegalArgumentException("The N must be > 0");
         }
@@ -232,8 +220,8 @@ public class MArrays {
         return result;
     }
 
-    public static void printArrayWithMulTable(int arr[]) {//1.3
-        if (arr == null ) {
+    public static void printArrayWithMulTable(int arr[]) {//1.3 +tested
+        if (arr == null) {
             throw new IllegalArgumentException("The print array is empty");
         }
 
@@ -243,14 +231,57 @@ public class MArrays {
         }
 
         int count = 0;
-        for (int i = 0; i < arr.length; i++) {
+        for (int anArr : arr) {
             count++;
-            System.out.printf("%d\t", arr[i]);
+            System.out.printf("%d\t", anArr);
             if (count == Math.sqrt(lengthCheck)) {
-                System.out.printf("\n");
+                System.out.print("\n");
                 count = 0;
             }
         }
+    }
+
+    /*
+    4. Настройте массив и напишите программу, чтобы получить среднее значение для всех чисел.
+    Пример: массив [23, 6,47, 35, 2,13]. Среднее значение равно 21.
+
+    EN: 4.	Set up an array and write a program to get the average of all numbers.
+    Example: Array is [23, 6,47, 35, 2,13]. Average is 21.
+     */
+
+    public double getAverage() {//1.4
+        if (array.length < 1) {
+            throw new IllegalArgumentException("The length must be >= 1");
+        }
+
+        return this.getSumElements() / (double) array.length;
+    }
+
+    public static double getAverage(char[] arr) {//1.4
+        if (arr.length < 1) {
+            throw new IllegalArgumentException("The length must be >= 1");
+        }
+        return MArrays.getSumElements(arr) / (double) arr.length;
+    }
+
+    public static double getAverage(int[] arr) {//1.4
+        if (arr.length < 1) {
+            throw new IllegalArgumentException("The length must be >= 1");
+        }
+        return MArrays.getSumElements(arr) / (double) arr.length;
+    }
+
+    /*
+    5. Average Streams
+     */
+
+    public static double getAverageStreams(int[] arr) {//1.4
+        if (arr.length < 1) {
+            throw new IllegalArgumentException("The length must be >= 1");
+        }
+        IntStream i = IntStream.of(arr);
+        OptionalDouble d = i.average();
+        return d.getAsDouble();
     }
 
 }
