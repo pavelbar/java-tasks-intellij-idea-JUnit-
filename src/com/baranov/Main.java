@@ -4,7 +4,6 @@ import com.baranov.core.MArrays;
 import com.baranov.core.MFiles;
 import com.baranov.core.MStrings;
 
-import java.io.IOException;
 
 class main {
 
@@ -29,7 +28,7 @@ class main {
         System.out.print("\n4444: ");
         System.out.print("\n55555: ");
         System.out.print("\n\n Result: \n");
-        MFiles.readAndInvert("C:/AAA_DEVLOP/HARMAN", "1.txt");
+        MFiles.readAndInvert("C:/AAA_DEVLOP/H", "1.txt");
         //
         //
         //
@@ -37,7 +36,7 @@ class main {
         //
         System.out.print("\n=======TASK 4.2===========================================");
         System.out.print("\n List .txt files: \n");
-        MFiles.printListFolder("C:/AAA_DEVLOP/HARMAN");
+        MFiles.printListFolder("C:/AAA_DEVLOP/H");
         //
         //
         //
@@ -45,7 +44,7 @@ class main {
         //
         System.out.print("\n=======TASK 4.3===========================================");
         System.out.print("\n The file 1.txt was copied to output.txt \n");
-        MFiles.CopyFile("C:/AAA_DEVLOP/HARMAN", "1.txt", "output.txt");
+        MFiles.CopyFile("C:/AAA_DEVLOP/H", "1.txt", "output.txt");
         //
         //
         //
