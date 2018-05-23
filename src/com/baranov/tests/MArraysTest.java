@@ -22,35 +22,31 @@ class MArraysTest {
     //#################################################################################################
 
     @Test
-    public void createEmptyArray_canNotCreateArrayWithNegativeLengthIsOne() {
-        Throwable exception = assertThrows(IllegalArgumentException.class,
-                () -> {
-                    MArrays a = new MArrays(-1);
-                });
+    void createEmptyArray_canNotCreateArrayWithNegativeLengthIsOne() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new MArrays(-1));
     }
 
     @Test
-    public void createEmptyArray_canNotCreateArrayWithNegativeLengthIsWwo() {
-        Throwable exception = assertThrows(IllegalArgumentException.class,
-                () -> {
-                    MArrays a = new MArrays(-2);
-                });
+    void createEmptyArray_canNotCreateArrayWithNegativeLengthIsWwo() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new MArrays(-2));
     }
 
     @Test
-    public void createEmptyArray_canCreateArrayWithlengthIsOne() {
+    void createEmptyArray_canCreateArrayWithlengthIsOne() {
         MArrays a = new MArrays(1);
         assertEquals(1, a.getLength());
     }
 
     @Test
-    public void createEmptyArray_canCreateArrayWithlengthIsTwo() {
+    void createEmptyArray_canCreateArrayWithlengthIsTwo() {
         MArrays a = new MArrays(2);
         assertEquals(2, a.getLength());
     }
 
     @Test
-    public void createNotEmptyArray_IdentityForArraysFromARABIC_NUMERALS() {
+    void createNotEmptyArray_IdentityForArraysFromARABIC_NUMERALS() {
         MArrays a = new MArrays(10);
 
         a.setEltAtIndex('1', 0);
@@ -76,13 +72,13 @@ class MArraysTest {
     //#################################################################################################
 
     @Test
-    public void createArrayFromArrayC_lengthArrayFromARABIC_NUMERALS() {
+    void createArrayFromArrayC_lengthArrayFromARABIC_NUMERALS() {
         MArrays a = new MArrays(CHAR_ARRAY_FROM_ARABIC_NUMERALS);
         assertEquals(10, a.getLength());
     }
 
     @Test
-    public void createArrayFromArrayC_IdentityArrayFromARABIC_NUMERALS() {
+    void createArrayFromArrayC_IdentityArrayFromARABIC_NUMERALS() {
         MArrays a = new MArrays(CHAR_ARRAY_FROM_ARABIC_NUMERALS);
         char[] result = new char[a.getLength()];
         for (int i = 0; i < a.getLength(); i++) {
@@ -92,13 +88,13 @@ class MArraysTest {
     }
 
     @Test
-    public void createArrayFromArrayC_lengthArrayFromLOW_ENGLISH_ALPHABET() {
+    void createArrayFromArrayC_lengthArrayFromLOW_ENGLISH_ALPHABET() {
         MArrays a = new MArrays(CHAR_ARRAY_FROM_ENGLISH_ALPHABET);
         assertEquals(18, a.getLength());
     }
 
     @Test
-    public void createArrayFromArrayC_IdentityArrayFromENGLISH_ALPHABET() {
+    void createArrayFromArrayC_lengthArrayFromUP_ENGLISH_ALPHABET() {
         MArrays a = new MArrays(CHAR_ARRAY_FROM_ENGLISH_ALPHABET);
         char[] result = new char[a.getLength()];
         for (int i = 0; i < a.getLength(); i++) {
@@ -112,13 +108,13 @@ class MArraysTest {
     //#################################################################################################
 
     @Test
-    public void createArrayFromArrayI_lengthArrayFromARABIC_NUMERALS() {
+    void createArrayFromArrayI_lengthArrayFromARABIC_NUMERALS() {
         MArrays a = new MArrays(INT_ARRAY_FROM_ARABIC_NUMERALS);
         assertEquals(10, a.getLength());
     }
 
     @Test
-    public void createArrayFromArrayI_IdentityArrayFromARABIC_NUMERALS() {
+    void createArrayFromArrayI_IdentityArrayFromARABIC_NUMERALS() {
         MArrays a = new MArrays(INT_ARRAY_FROM_ARABIC_NUMERALS);
         char[] result = new char[a.getLength()];
         for (int i = 0; i < a.getLength(); i++) {
@@ -128,18 +124,18 @@ class MArraysTest {
     }
 
     @Test
-    public void createArrayFromArrayI_CheckLenghtOfArrayFromNullArray() {
+    void createArrayFromArrayI_CheckLenghtOfArrayFromNullArray() {
         int[] arr = {};
         MArrays a = new MArrays(arr);
         assertEquals(a.getLength(), 0);
     }
 
     @Test
-    public void createArrayFromArrayI_canNotCreateArrayWithNegativeDigits() {
-        Throwable exception = assertThrows(IllegalArgumentException.class,
+    void createArrayFromArrayI_canNotCreateArrayWithNegativeDigits() {
+        assertThrows(IllegalArgumentException.class,
                 () -> {
                     int[] arr = {-1, -2, -3};
-                    MArrays a = new MArrays(arr);
+                    new MArrays(arr);
                 });
     }
     //#################################################################################################
@@ -147,7 +143,7 @@ class MArraysTest {
     //#################################################################################################
 
     @Test
-    public void setRandomSymbolsFromAlphabetToArray_NotIdentityArrayFromDifferentAlphabets() {
+    void setRandomSymbolsFromAlphabetToArray_NotIdentityArrayFromDifferentAlphabets() {
         MArrays a = new MArrays(1000);
         MArrays b = new MArrays(1000);
 
@@ -167,7 +163,7 @@ class MArraysTest {
     }
 
     @Test
-    public void setRandomSymbolsFromAlphabetToArray_IdentityArrayFromSameAlphabets() {
+    void setRandomSymbolsFromAlphabetToArray_IdentityArrayFromSameAlphabets() {
         MArrays a = new MArrays(1000);
         MArrays b = new MArrays(1000);
 
@@ -187,7 +183,7 @@ class MArraysTest {
     }
 
     @Test
-    public void setRandomSymbolsFromAlphabetToArray_CheckLength() {
+    void setRandomSymbolsFromAlphabetToArray_CheckLength() {
         MArrays a = new MArrays(1234);
 
         a.setRandomSymbolsFromAlphabetToArray(ENGLISH_ALPHABET);
@@ -205,43 +201,39 @@ class MArraysTest {
     //#################################################################################################
 
     @Test
-    public void calcSumArrayElements_CharObject() {
+    void calcSumArrayElements_CharObject() {
         MArrays a = new MArrays(CHAR_ARRAY_FROM_ARABIC_NUMERALS);
-        assertEquals(a.calcSumElements(), 45);
+        assertEquals(a.getSumElements(), 45);
     }
 
     @Test
-    public void calcSumArrayElements_CharFoo() {
-        assertEquals(MArrays.calcSumElements(CHAR_ARRAY_FROM_ARABIC_NUMERALS), 45);
+    void calcSumArrayElements_CharFoo() {
+        assertEquals(MArrays.getSumElements(CHAR_ARRAY_FROM_ARABIC_NUMERALS), 45);
     }
 
     @Test
-    public void calcSumArrayElements_IntObject() {
+    void calcSumArrayElements_IntObject() {
         MArrays a = new MArrays(INT_ARRAY_FROM_ARABIC_NUMERALS);
-        assertEquals(a.calcSumElements(), 45);
+        assertEquals(a.getSumElements(), 45);
     }
 
     @Test
-    public void calcSumArrayElements_IntFoo() {
-        assertEquals(MArrays.calcSumElements(INT_ARRAY_FROM_ARABIC_NUMERALS), 45);
+    void calcSumArrayElements_IntFoo() {
+        assertEquals(MArrays.getSumElements(INT_ARRAY_FROM_ARABIC_NUMERALS), 45);
     }
 
     @Test
-    public void calcSumArrayElements_canNotCalcForCharObject() {
+    void calcSumArrayElements_canNotCalcForCharObject() {
         MArrays a = new MArrays(77);
         a.setRandomSymbolsFromAlphabetToArray(ENGLISH_ALPHABET);
-        Throwable exception = assertThrows(IllegalArgumentException.class,
-                () -> {
-                    a.calcSumElements();
-                });
+        assertThrows(IllegalArgumentException.class,
+                a::getSumElements);
     }
 
     @Test
-    public void calcSumArrayElements_canNotCalcForCharFoo() {
-        Throwable exception = assertThrows(IllegalArgumentException.class,
-                () -> {
-                    MArrays.calcSumElements(CHAR_ARRAY_FROM_ENGLISH_ALPHABET);
-                });
+    void calcSumArrayElements_canNotCalcForCharFoo() {
+        assertThrows(IllegalArgumentException.class,
+                () -> MArrays.getSumElements(CHAR_ARRAY_FROM_ENGLISH_ALPHABET));
     }
 
     //#################################################################################################
@@ -249,27 +241,27 @@ class MArraysTest {
     //#################################################################################################
 
     @Test
-    public void findIndexOfTwoNeighboringNumbers_CharObject() {
+    void findIndexOfTwoNeighboringNumbers_CharObject() {
         char[] arr1 = {'4', '8', '6', '1', '2', '9', '4'};
         MArrays a = new MArrays(arr1);
         assertEquals(a.findIndexOfTwoNeighboringNumbers(), 3);
     }
 
     @Test
-    public void findIndexOfTwoNeighboringNumbers_CharFoo() {
+    void findIndexOfTwoNeighboringNumbers_CharFoo() {
         char[] arr1 = {'4', '8', '6', '1', '2', '9', '4'};
         assertEquals(MArrays.findIndexOfTwoNeighboringNumbers(arr1), 3);
     }
 
     @Test
-    public void findIndexOfTwoNeighboringNumbers_IntObject() {
+    void findIndexOfTwoNeighboringNumbers_IntObject() {
         int[] arr1 = {4, 8, 6, 1, 2, 9, 4};
         MArrays a = new MArrays(arr1);
         assertEquals(a.findIndexOfTwoNeighboringNumbers(), 3);
     }
 
     @Test
-    public void findIndexOfTwoNeighboringNumbers_IntFoo() {
+    void findIndexOfTwoNeighboringNumbers_IntFoo() {
         int[] arr1 = {4, 8, 6, 1, 2, 9, 4};
         assertEquals(MArrays.findIndexOfTwoNeighboringNumbers(arr1), 3);
     }
@@ -277,28 +269,63 @@ class MArraysTest {
     //#################################################################################################
     //##### 1.3 MulTable ##############################################################################
     //#################################################################################################
+
     @Test
-    public void getArrayWithMulTable_forNisThree() {
+    void getArrayWithMulTable_forNisThree() {
         int[] result = {1, 2, 3, 2, 4, 6, 3, 6, 9};
         assertArrayEquals(MArrays.getArrayWithMulTable(3), result);
     }
 
     @Test
-    public void getArrayWithMulTable_forNisFour() {
+    void getArrayWithMulTable_forNisFour() {
         int[] result = {1, 2, 3, 4,
-                        2, 4, 6, 8,
-                        3, 6, 9, 12,
-                        4, 8, 12, 16};
+                2, 4, 6, 8,
+                3, 6, 9, 12,
+                4, 8, 12, 16};
         assertArrayEquals(MArrays.getArrayWithMulTable(4), result);
     }
 
     @Test
-    public void printArrayWithMulTable_canNotPrintInvalidArray() {
+    void printArrayWithMulTable_canNotPrintInvalidArray() {
         int[] arr = {1, 2, 3};
-        Throwable exception = assertThrows(IllegalArgumentException.class,
-                () -> {
-                    MArrays.printArrayWithMulTable(arr);
-                });
+        assertThrows(IllegalArgumentException.class,
+                () -> MArrays.printArrayWithMulTable(arr));
     }
 
+    //#################################################################################################
+    //##### 1.4 getAverage ##############################################################################
+    //#################################################################################################
+    @Test
+    void getAverage_FooForIntArrOne() {
+        int[] arr1 = {1, 2, 3, 5, 6};
+        assertEquals(MArrays.getAverage(arr1), 3.4);
+    }
+
+    @Test
+    void getAverage_FooForIntArrTwo() {
+        int[] arr1 = {11, 22, 33, 55, 66};
+        assertEquals(MArrays.getAverage(arr1), 37.4);
+    }
+
+    @Test
+    void getAverage_FooForCharArr() {
+        char[] arr1 = {'7', '7', '8', '8', '4'};
+        assertEquals(MArrays.getAverage(arr1), 6.8);
+    }
+
+    @Test
+    void getAverage_ObjectForCharArr() {
+        char[] arr1 = {'7', '7', '8', '8', '4'};
+        MArrays a = new MArrays(arr1);
+        assertEquals(a.getAverage(), 6.8);
+    }
+
+    //#################################################################################################
+    //##### 1.5 getAverage Streams ##############################g##########################################
+    //#################################################################################################
+    @Test
+    void getAverageStreams() {
+        int[] arr = {7, 7, 8, 8, 4};
+        assertEquals(MArrays.getAverageStreams(arr), 6.8);
+    }
 }
